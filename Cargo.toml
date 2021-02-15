@@ -3,7 +3,7 @@ name = "computergeneration"
 description = "compgen but all wrong"
 license = "MIT"
 homepage = "https://github.com/LPGhatguy/computergeneration"
-version = "0.1.1"
+version = "0.2.0"
 authors = ["Lucien Greathouse <me@lpghatguy.com>"]
 edition = "2018"
 
