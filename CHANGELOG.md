@@ -1,6 +1,10 @@
 # computergeneration Change Log
 
 ## Unreleased Changes
+- Replaced `--case-insensitive` with `--case` argument. Values are:
+  - `auto` (default): Case sensitive if there are uppercase letters in the input pattern
+  - `sensitive`: Always case sensitive
+  - `insensitive`: Always case insensitive
 
 ## [0.1.1][0.1.1] (February 15, 2021)
 - Fixed case insensitive matches when pattern is longer than input. ([#1][issue-1])

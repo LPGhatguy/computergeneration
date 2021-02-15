@@ -9,18 +9,15 @@ cargo install computergeneration
 
 ```
 $ computergeneration --help
-computergeneration 0.1.0
+computergeneration 0.2.0
 Generates completions based on a word list and a prompt.
 
 Word list is expected to be provided via stdin, and newline-delimited.
 
 USAGE:
-    computergeneration.exe [FLAGS] <input>
+    computergeneration.exe [OPTIONS] <pattern>
 
 FLAGS:
-    -i, --case-insensitive
-            Whether matches should ignore case
-
     -h, --help
             Prints help information
 
@@ -28,9 +25,17 @@ FLAGS:
             Prints version information
 
 
+OPTIONS:
+        --case <case>
+            Case matching strategy to use
+
+            * auto: Case insensitive if pattern is all lowercase
+            * sensitive: Always case sensitive
+            * insensitive: Always case insensitive [default: auto]
+
 ARGS:
-    <input>
-            Beginning of line to complete against
+    <pattern>
+            Pattern to complete against
 ```
 
 ## Basic Usage
@@ -60,7 +65,7 @@ function proj() {
 }
 
 function _proj_complete() {
-	COMPREPLY=( $(\ls -1 $PROJ | computergeneration -i "${COMP_WORDS[1]}") )
+	COMPREPLY=( $(\ls -1 $PROJ | computergeneration "${COMP_WORDS[1]}") )
 	return 0
 }
 complete -F _proj_complete proj
