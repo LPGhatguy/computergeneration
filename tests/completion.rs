@@ -55,3 +55,16 @@ fn case_insensitive() -> anyhow::Result<()> {
 
     Ok(())
 }
+
+// https://github.com/LPGhatguy/computergeneration/issues/1
+#[test]
+fn issue_1() -> anyhow::Result<()> {
+    test_this_one(
+        &["--case-insensitive"],
+        "rojo.",
+        &["rojo", "rojo.space"],
+        &["rojo.space"],
+    )?;
+
+    Ok(())
+}

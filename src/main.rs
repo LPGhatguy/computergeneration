@@ -44,11 +44,22 @@ fn check_match(input: &str, word: &str) -> bool {
 }
 
 fn check_match_insensitive(input: &str, word: &str) -> bool {
-    for (input_char, word_char) in input.chars().zip(word.chars()) {
-        if !input_char.eq_ignore_ascii_case(&word_char) {
-            return false;
+    let mut input_chars = input.chars();
+    let mut word_chars = word.chars();
+
+    loop {
+        match (input_chars.next(), word_chars.next()) {
+            (Some(input_char), Some(word_char)) => {
+                if !input_char.eq_ignore_ascii_case(&word_char) {
+                    return false;
+                }
+            }
+
+            // input is longer than word, which means we cannot match!
+            (Some(_), None) => return false,
+
+            // input is over, we have matched successfully
+            (None, _) => return true,
         }
     }
-
-    true
 }
