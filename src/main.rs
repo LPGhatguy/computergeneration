@@ -44,7 +44,8 @@ impl FromStr for CaseMode {
 
             _ => Err(format_err!(
                 "Unknown case mode '{}'. Expected one of \
-                 'auto', 'sensitive', or 'insensitive'."
+                 'auto', 'sensitive', or 'insensitive'.",
+                input,
             )),
         }
     }
